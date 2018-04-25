@@ -26,3 +26,29 @@ interface Achievements {
   function achievement(uint256 _achievementId) returns (string title, string description, string icon);
 }
 ```
+
+## Proposed Scenario
+
+### Given
+
+- Player (P)
+- ERC721 Contract (TC)
+- ERC721 Token of TC (T)
+- Off chain Game (G)
+- Achievements Contract (AC)
+- Achievement Token of AC (AT)
+
+### Relationships
+
+- P owns T
+- P plays G using T
+- G owns AC and creates AT
+- T owns AT
+
+### Scenario
+
+When P has made a significant achievement, G creates a transaction to `addAchievement` on AC, creating AT, which represents the achievement.
+
+P has no direct control of the AT, but can buy, sell or transfer T, which owns AT.
+
+Owner of TC, building the UI to represent the properties of T can use infromation about AT to visualize achievements T owns.
